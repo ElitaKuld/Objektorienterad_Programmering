@@ -25,5 +25,5 @@ public abstract class FordonAbstrakt {
         this.hastighet = nyHastighet;
     }
 
-   public abstract void printMe();
+    public abstract void printMe();
 }

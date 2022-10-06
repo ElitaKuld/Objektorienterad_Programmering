@@ -8,7 +8,7 @@ public class Bil {
     private String märke;
     Bilägare bilägare = new Bilägare();
 
-    public Bil() {
+    public Bil(String s, String tesla, String eclipse) {
     }
 
     public Bil(String registreringsnummer, String modell, String märke, String namn, String adress, int ålder) {
@@ -20,28 +20,12 @@ public class Bil {
         bilägare.setÅlder(ålder);
     }
 
-    public Bil(String registreringsnummer, String modell, String märke, Bilägare bilägare) {
-        setRegistreringsnummer(registreringsnummer);
-        setModell(modell);
-        setMärke(märke);
-        this.bilägare.setNamn(bilägare.getNamn());
-        this.bilägare.setAdress(bilägare.getAdress());
-        this.bilägare.setÅlder(bilägare.getÅlder());
-    }
-
-    public Bil(String registreringsnummer, String modell, String märke) {
-        setRegistreringsnummer(registreringsnummer);
-        setModell(modell);
-        setMärke(märke);
-    }
-
     public Bil(Bilägare ägare) {
         if (ägare != null)
             bilägare = ägare;
         else
             throw new NullPointerException();
     }
-
     public Bilägare getBilägare() {
         return bilägare;
     }
@@ -86,11 +70,8 @@ public class Bil {
             throw new NullPointerException("Felaktigt registreringsnummer");
     }
 
-    public void bytÄgare(String nyÄgare) {
-        if (nyÄgare != null)
-            bilägare.setNamn(nyÄgare);
-        else
-            System.out.println("Namnet kan inte vara tomt");
+    public void bytÄgare(Bilägare nyÄgare) {
+        bilägare.setNamn(nyÄgare.getNamn());
     }
 
     public void skrivUt() {

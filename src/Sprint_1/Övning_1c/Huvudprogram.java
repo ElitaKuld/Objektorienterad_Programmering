@@ -9,16 +9,19 @@ public class Huvudprogram {
         Scanner scan = new Scanner(System.in);
         Bil bil = new Bil("125 BFD", "Tesla", "Universe", "Fredrik Johansson", " Stora väge 25", 25);
         System.out.println("Vad heter den nya bilägaren?");
-        bil.bytÄgare(scan.nextLine());
+        Bilägare superÄgare = new Bilägare();
+        superÄgare.setNamn(scan.nextLine());
+        bil.bytÄgare(superÄgare);
         bil.skrivUt();
         Bilägare ägare = new Bilägare("Elita Kuld", "Sara Moraeas väg 132", 36);
-        System.out.println(ägare.toString());
-        Bil bil2 = new Bil("255 OOP", "Tesla", "Eclipse", ägare);
-        bil2.skrivUt();
+        System.out.println();
+
         Bil bil3 = new Bil("111 BNU", "Harley", "Davidson", "Jose Merona", "Visby gatan 29", 36);
-        bil3.bytÄgare("Ale Cypres");
+        bil3.bytÄgare(superÄgare);
         bil3.skrivUt();
-        Bil bil5 = new Bil();
+        System.out.println();
+
+        Bil bil5 = new Bil("255 OOP", "Tesla", "Eclipse");
         bil5.setRegistreringsnummer("258 BHY");
         bil5.setModell("Volvo");
         bil5.setMärke("Lego");
