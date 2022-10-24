@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CalculatorTest {
 
     @Test
-    void kontrolleraOperatorTest(){
+    void kontrolleraOperatorTest() {
         String error = "%";
         Throwable exception = assertThrows(OperatorNotSupportedException.class, () -> Calculator.kontrolleraOperator(error));
     }
