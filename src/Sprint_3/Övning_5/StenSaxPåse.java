@@ -9,6 +9,8 @@ public class StenSaxPåse extends JFrame implements ActionListener {
     JPanel grundPanel = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel resultatPanel = new JPanel();
+    int användarePoäng = 0;
+    int datorPoäng = 0;
 
     JLabel användareLabel = new JLabel("Användaren");
     JButton användareSten = new JButton("Sten");
@@ -19,8 +21,7 @@ public class StenSaxPåse extends JFrame implements ActionListener {
     JButton datorSax = new JButton("Sax");
     JButton datorPåse = new JButton("Påse");
 
-    JButton resultatButton = new JButton("Beräkna resultat");
-    JTextArea resultatArea = new JTextArea("Ställningen:\n", 5, 30);
+    JTextArea resultatArea = new JTextArea("Ställningen:\n", 15, 30);
     JScrollPane scroll = new JScrollPane(resultatArea);
 
     StenSaxPåse() {
@@ -43,11 +44,7 @@ public class StenSaxPåse extends JFrame implements ActionListener {
         användareSax.addActionListener(this);
         användarePåse.addActionListener(this);
 
-        resultatPanel.setLayout(new BorderLayout());
-        resultatPanel.add(resultatButton, BorderLayout.NORTH);
         resultatPanel.add(scroll, BorderLayout.SOUTH);
-
-        resultatButton.addActionListener(this);
 
         pack();
         setLocationRelativeTo(null);
@@ -57,12 +54,60 @@ public class StenSaxPåse extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        final int STEN = 0, SAX = 1, PÅSE = 2;
+        int valAnvändare = 0;
         if (e.getSource() == användareSten) {
+            valAnvändare = STEN;
             användareSten.setBackground(Color.GREEN);
-            /*Container container = ((Container) e.getSource()).getParent();
-            Component component = container.getComponent(0);
-            container.getComponent(1).setBackground(Color.BLUE);*/
+            användareSax.setBackground(Color.LIGHT_GRAY);
+            användarePåse.setBackground(Color.LIGHT_GRAY);
+        } else if (e.getSource() == användareSax) {
+            valAnvändare = SAX;
+            användareSax.setBackground(Color.GREEN);
+            användareSten.setBackground(Color.LIGHT_GRAY);
+            användarePåse.setBackground(Color.LIGHT_GRAY);
+        } else if (e.getSource() == användarePåse) {
+            valAnvändare = PÅSE;
+            användarePåse.setBackground(Color.GREEN);
+            användareSten.setBackground(Color.LIGHT_GRAY);
+            användareSax.setBackground(Color.LIGHT_GRAY);
+        }
+
+        int valDator = (int) (Math.random() * 3);
+        if (valDator == STEN) {
+            datorSten.setBackground(Color.CYAN);
+            datorSax.setBackground(Color.LIGHT_GRAY);
+            datorPåse.setBackground(Color.LIGHT_GRAY);
+        } else if (valDator == SAX) {
+            datorSax.setBackground(Color.CYAN);
+            datorSten.setBackground(Color.LIGHT_GRAY);
+            datorPåse.setBackground(Color.LIGHT_GRAY);
+        } else {
+            datorPåse.setBackground(Color.CYAN);
+            datorSten.setBackground(Color.LIGHT_GRAY);
+            datorSax.setBackground(Color.LIGHT_GRAY);
+        }
+
+        if (valAnvändare == valDator) {
+            resultatArea.append("Ingen har vunnit denna gång. Det är jämnt.\n");
+        } else if (valAnvändare == STEN && valDator == SAX) {
+            användarePoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
+        } else if (valAnvändare == STEN && valDator == PÅSE) {
+            datorPoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
+        } else if (valAnvändare == SAX && valDator == STEN) {
+            datorPoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
+        } else if (valAnvändare == SAX && valDator == PÅSE) {
+            användarePoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
+        } else if (valAnvändare == PÅSE && valDator == STEN) {
+            användarePoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
+        } else if (valAnvändare == PÅSE && valDator == SAX) {
+            datorPoäng++;
+            resultatArea.append("Användare VS Dator     " + användarePoäng + " - " + datorPoäng + "\n");
         }
     }
 
