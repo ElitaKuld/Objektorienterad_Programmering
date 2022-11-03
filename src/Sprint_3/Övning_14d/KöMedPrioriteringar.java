@@ -37,7 +37,7 @@ public class KöMedPrioriteringar {
             nuvarandeAntal++;
         }
 
-        for (Producer producent : listaProducenter){
+        for (Producer producent : listaProducenter) {
             producent.start();
         }
 
