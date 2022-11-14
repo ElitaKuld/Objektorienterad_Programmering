@@ -62,7 +62,7 @@ public class KlassChatt_MultiThread {
                     socket.leaveGroup(group, netIf);
                 } catch (IOException ie) {
                     socket.close();
-                    // dispose(); Vilket paket???
+                    frame.dispose();
                     System.exit(0);
                 }
             }
