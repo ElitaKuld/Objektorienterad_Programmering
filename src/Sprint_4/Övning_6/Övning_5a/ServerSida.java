@@ -1,4 +1,4 @@
-package Sprint_4.Övning_5a;
+package Sprint_4.Övning_6.Övning_5a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
