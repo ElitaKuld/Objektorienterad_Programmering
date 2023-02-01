@@ -1,4 +1,4 @@
-package Sprint_4.Övning_6.Övning_5a;
+package Sprint_4.Övning_5a;
 
 public class Person {
     private String namn;
